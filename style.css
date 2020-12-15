@@ -12,7 +12,7 @@
   --color-light-grey: #7c7979;
   --color-red: #b61827;
   --color-yellow: #fdd835;
-  --color-orange:#ef5350;
+  --color-orange: #ef5350;
 
   /* Font Size */
   --font-large: 48px;
@@ -33,7 +33,6 @@
   --animation-duration: 300ms;
 }
 
-
 /* Universal tags */
 
 * {
@@ -42,14 +41,14 @@
 
 body {
   margin: 0;
-  font-family: 'Spoqa Han Sans Neo';
+  font-family: "Spoqa Han Sans Neo";
   line-height: 1.5;
   cursor: default;
 }
 
 a {
   text-decoration: none;
-  color:var(--color-white);
+  color: var(--color-white);
 }
 
 ul {
@@ -64,7 +63,6 @@ button {
   border: none;
   outline: none;
 }
-
 
 /* Typography */
 
@@ -95,8 +93,6 @@ p {
   color: var(--color-black);
   margin: 4px 0;
 }
-
-
 
 /* Navbar */
 
@@ -141,8 +137,6 @@ p {
   border-radius: 4px;
 }
 
-
-
 /* Home */
 
 #home {
@@ -151,7 +145,7 @@ p {
   background: url(./assets/imgs/background.jpg) center/cover no-repeat;
 }
 
-.home__avatar{
+.home__avatar {
   width: 240px;
   height: 240px;
   border-radius: 50%;
@@ -173,7 +167,6 @@ p {
   color: var(--color-white);
 }
 
-
 /* Section common */
 
 .section {
@@ -186,7 +179,6 @@ p {
   max-width: 1200px;
   margin: auto;
 }
-
 
 /* About */
 
@@ -213,7 +205,7 @@ p {
   color: var(--color-dart-grey);
 }
 
-.major__title{
+.major__title {
   margin-bottom: 12px;
 }
 
@@ -225,7 +217,7 @@ p {
   transition: all var(--animation-duration) ease;
 }
 
-.major__icon:hover i{
+.major__icon:hover i {
   color: var(--color-orange);
   transform: scale(1.2) rotate(30deg);
 }
@@ -246,14 +238,12 @@ p {
 }
 
 .experience__name {
-  font-size: var(--font-small)
+  font-size: var(--font-small);
 }
 
 .experiece__period {
   font-size: var(--font-micro);
 }
-
-
 
 /* Skillset */
 
@@ -281,7 +271,7 @@ p {
   background-color: var(--color-dark-grey);
 }
 
-.skillset__right{
+.skillset__right {
   flex: 40%;
   background-color: var(--color-light-grey);
 }
@@ -292,7 +282,7 @@ p {
 }
 
 .etc {
-  padding: 20px 40px; 
+  padding: 20px 40px;
 }
 
 .skill {
@@ -314,8 +304,6 @@ p {
   height: 100%;
   background-color: var(--color-blue);
 }
-
-
 
 /* Work */
 
@@ -408,7 +396,7 @@ p {
 }
 
 .project__description h3::after {
-  content: '';
+  content: "";
   display: block;
   position: relative;
   left: 50%;
@@ -418,8 +406,6 @@ p {
   margin-left: -12px;
   background-color: var(--color-white);
 }
-
-
 
 /* Testimonials */
 
@@ -432,7 +418,7 @@ p {
 }
 
 .testimonial {
-  display: flex; 
+  display: flex;
   margin: 32px 0;
 }
 
@@ -461,5 +447,32 @@ p {
 }
 
 .testimonial__speech-bubble a {
+  color: var(--color-dark-blue);
+}
+
+/* Contact */
+
+#contact {
+  background-color: var(--color-blue);
+}
+
+.contact__title,
+.contact__email,
+.contact__rights {
+  color: var(--color-white);
+}
+
+.contact__title {
+  margin: 32px 0;
+}
+
+.contact__links {
+  font-size: var(--font-large);
+  margin: 24px 0;
+  transition: all var(--animation-duration) ease-in;
+}
+
+.contact__links i:hover {
+  transform: scale(1.1);
   color: var(--color-dark-blue);
 }
