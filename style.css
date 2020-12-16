@@ -499,6 +499,29 @@ p {
 }
 
 
+.arrow-up {
+  position: fixed;
+  bottom: 48px;
+  right: 48px;
+  background-color: var(--color-dark-blue);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: var(--color-white);
+  font-size: var(--font-medium);
+  line-height: 48px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--animation-duration) ease-in;
+}
+
+.arrow-up.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
 
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
