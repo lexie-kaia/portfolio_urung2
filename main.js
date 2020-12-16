@@ -36,11 +36,6 @@ homeContactBtn.addEventListener('click', () => {
   scrollIntoView('#contact');
 })
 
-function scrollIntoView(selector) {
-  const scrollTo = document.querySelector(selector);
-  scrollTo.scrollIntoView({behavior: 'smooth'});
-}
-
 
 // Make home slowly fade to transparent as the window scrolls down
 const home = document.querySelector('#home');
@@ -68,3 +63,36 @@ document.addEventListener('scroll', () => {
  arrowUp.addEventListener('click', () => {
    scrollIntoView('#home');
  })
+
+
+
+// Projects
+const workBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project')
+
+
+workBtnContainer.addEventListener('click', (event) => {
+  const filter = event.target.dataset.filter || event.target.parentNode.dataset.filter;
+  if(filter == null) {
+    return;
+  }
+  projectContainer.classList.add('anim-out');
+
+  setTimeout(() => {
+    projects.forEach((project) => {
+      if(filter === '*' || filter === project.dataset.type) {
+        project.classList.remove('invisible');
+      } else {
+        project.classList.add('invisible');
+      }
+    });
+    projectContainer.classList.remove('anim-out');
+  }, 300)
+});
+
+
+function scrollIntoView(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({behavior: 'smooth'});
+}
