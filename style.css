@@ -97,12 +97,20 @@ p {
 /* Navbar */
 
 #navbar {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: transparent;
+  width: 100%;
   padding: 16px;
   color: var(--color-white);
-  background-color: var(--color-blue);
+  transition: all var(--animation-duration) ease-in-out;
+}
+
+#navbar.navbar--dark {
+  background-color: var(--color-dark-blue);
+  padding: 8px;
 }
 
 .navbar__logo {
@@ -152,6 +160,7 @@ p {
 
 #home {
   padding: 40px;
+  padding-top: 120px;
   text-align: center;
   background: url(./assets/imgs/background.jpg) center/cover no-repeat;
 }
@@ -276,14 +285,14 @@ p {
 }
 
 .skillset__left {
-  flex: 60%;
+  flex-basis: 60%;
   padding: 20px 40px;
   color: white;
   background-color: var(--color-dark-grey);
 }
 
 .skillset__right {
-  flex: 40%;
+  flex-basis: 40%;
   background-color: var(--color-light-grey);
 }
 
@@ -529,3 +538,4 @@ p {
     height: 80px;
   }
 }
+
