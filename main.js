@@ -13,6 +13,7 @@ document.addEventListener('scroll', () => {
   } else {
     navbar.classList.remove('navbar--dark');
   }
+  navbarMenu.classList.remove('open');
 })
 
 
@@ -27,6 +28,13 @@ navbarMenu.addEventListener('click', (event) => {
   }
   scrollIntoView(link);
 })
+
+
+// Nnavbar toggle button for small screen
+const navbarToggleBtn = document.querySelector('.navber__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
+});
 
 
 // Handle click on 'contact' button on home

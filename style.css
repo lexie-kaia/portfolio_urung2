@@ -144,7 +144,7 @@ p {
   background-color: var(--color-blue);
 }
 
-.navber__toogle-btn {
+.navber__toggle-btn {
   position: absolute;
   top: 25px;
   right: 32px;
@@ -422,7 +422,7 @@ p {
 }
 
 .project__description h3 {
-  color: var(--color-white);
+  color: var(--color-orange);
 }
 
 .project__description h3::after {
@@ -430,10 +430,10 @@ p {
   display: block;
   position: relative;
   left: 50%;
-  width: 25px;
+  width: 56px;
   height: 2px;
   margin-top: 8px;
-  margin-left: -12px;
+  transform: translateX(-50%);
   background-color: var(--color-white);
 }
 
@@ -534,13 +534,18 @@ p {
 
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
-  .navber__toogle-btn {
+  .navber__toggle-btn {
     display: block;
   }
 
   #navbar {
     flex-direction: column;
     align-items: flex-start;
+    background-color: var(--color-black);
+  }
+
+  #navbar.navbar--dark {
+    padding: 16px;
   }
 
   .navbar__menu {
@@ -548,6 +553,10 @@ p {
     flex-direction: column;
     text-align: center;
     width: 100%;
+  }
+
+  .navbar__menu.open {
+    display: block;
   }
 
   .about__majors {
