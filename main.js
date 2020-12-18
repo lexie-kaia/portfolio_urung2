@@ -1,98 +1,110 @@
 'use strict';
 
 // Make navbar transparent when it is on the top
-
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 
 document.addEventListener('scroll', () => {
-  // console.log(window.scrollY);
-  // console.log(`navbarHeight: ${navbarHeight}`);
-  if(window.scrollY > navbarHeight) {
+  if (window.scrollY > navbarHeight) {
     navbar.classList.add('navbar--dark');
   } else {
     navbar.classList.remove('navbar--dark');
   }
   navbarMenu.classList.remove('open');
-})
+});
 
 
 // Handle scrolling when tapping on the navbar menu
-
-const navbarMenu = document.querySelector('.navbar__menu');
-navbarMenu.addEventListener('click', (event) => {
-  const target = event.target;
-  const link = target.dataset.link;
+navbar.addEventListener('click', (event) => {
+  const link = event.target.dataset.link;
   if (link == null) {
     return;
   }
-  scrollIntoView(link);
-})
+  scrollIntoView(link)
+});
+
+function scrollIntoView(selector) {
+  const section = document.querySelector(selector);
+  section.scrollIntoView({behavior: "smooth"});
+}
 
 
-// Nnavbar toggle button for small screen
-const navbarToggleBtn = document.querySelector('.navber__toggle-btn');
+// Navbar toggle button for small screen
+  // make toggleBtn in HTML
+  // default toggleBtn display: none, position: absolute;
+  // below 768px toggleBtn display: block;/ navbar display: none;
+  // addEventListener -> click, add .navbar class .open(display:block)
+  // in handle scrolling above, link == null -> return;
+  // remove class .open when scrolling down
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+const navbarMenu = document.querySelector('.navbar__menu');
+
 navbarToggleBtn.addEventListener('click', () => {
   navbarMenu.classList.toggle('open');
 });
 
 
-// Handle click on 'contact' button on home
-
+// Handle click on 'contact me' button on home
+  // get contact me button, add eventlistner
+  // handle scrolling to contact section
 const homeContactBtn = document.querySelector('.home__contact');
+
 homeContactBtn.addEventListener('click', () => {
   scrollIntoView('#contact');
-})
+});
 
 
 // Make home slowly fade to transparent as the window scrolls down
+  // 1 - scroll value / home height * 2 -> home__container opacity
 const home = document.querySelector('#home');
 const homeHeight = home.getBoundingClientRect().height;
-const homeContainer = document.querySelector('.home__container')
+const homeContainer = document.querySelector('.home__container');
 
- document.addEventListener('scroll', () => {
-  homeContainer.style.opacity = 1 - window.scrollY / homeHeight
- });
+document.addEventListener('scroll', () => {
+  homeContainer.style.opacity = 1 - window.scrollY / homeHeight * 2;
+});
 
 
- // show 'arrow up' button when scrolling down
-const arrowUp = document.querySelector('.arrow-up');
+// show 'arrow up' button when scrolling down
+  // make arrow up button in HTML
+  // make class .visible with opactiy and pointer events
+    // display: none(X) -> can't handle animation
+  // scroll down -> add class .visible
+const arrowUpBtn = document.querySelector('.arrow-up');
 
 document.addEventListener('scroll', () => {
   if (window.scrollY > homeHeight / 2) {
-    arrowUp.classList.add('visible');
+    arrowUpBtn.classList.add('visible');
   } else {
-    arrowUp.classList.remove('visible');
+    arrowUpBtn.classList.remove('visible');
   }
+});
+
+
+// Handle click on the 'arrow up' button
+arrowUpBtn.addEventListener('click', () => {
+  scrollIntoView('#home');
 })
 
- // Handle click on the 'arrow up' button
-
- arrowUp.addEventListener('click', () => {
-   scrollIntoView('#home');
- })
 
 
+// Project
+  // add category__btn -> data-filter/ project -> data-type in html
+  // when 'data-filter' clicked -> display:none !'data-filter' === 'data-type' 
 
-// Projects
-const workBtnContainer = document.querySelector('.work__categories');
-const projectContainer = document.querySelector('.work__projects');
+const projectBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects')
 const projects = document.querySelectorAll('.project')
 
-
-workBtnContainer.addEventListener('click', (event) => {
+projectBtnContainer.addEventListener('click', (event) => {
   const filter = event.target.dataset.filter || event.target.parentNode.dataset.filter;
   if(filter == null) {
     return;
   }
 
-  // Remove selection from the previous item and select the new one
-
-  const active = document.querySelector('.category__btn.selected');
+  const active = document.querySelector('.category__btn.selected')
   active.classList.remove('selected');
-  const target = 
-    event.target.nodeName === 'BUTTON' ?
-    event.target : event.target.parentNode;
+  const target = event.target.nodeName === 'BUTTON' ? event.target : event.target.parentNode;
   target.classList.add('selected');
 
   projectContainer.classList.add('anim-out');
@@ -103,13 +115,7 @@ workBtnContainer.addEventListener('click', (event) => {
       } else {
         project.classList.add('invisible');
       }
-    });
+    })
     projectContainer.classList.remove('anim-out');
   }, 300)
 });
-
-
-function scrollIntoView(selector) {
-  const scrollTo = document.querySelector(selector);
-  scrollTo.scrollIntoView({behavior: 'smooth'});
-}
